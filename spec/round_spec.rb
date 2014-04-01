@@ -11,10 +11,16 @@ describe Round do
     expect(round1.r_id).to eq 2
   end
 
-  xit "should start a round with two players" do
+  it "should start a round with two players" do
     round1 = Round.new("rpsgame",1)
+    user1 = Users.new("bob")
+    user2 = Users.new("john")
 
-    round1.play()
+    userinput1 = "rock"
+    userinput2 = "paper"
+    round1.play(user1,user2,userinput1,userinput2)
+
+
   end
 
   it "should start a round with nil for round winner id" do

@@ -10,7 +10,7 @@ describe Users do
 
   it "should start user with an unique id" do
     bob = Users.new("bob")
-    expect(bob.id).to eq 2
+    expect(bob.id).to eq 4
   end
 
   it "should start user with a password" do

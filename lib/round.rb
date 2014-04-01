@@ -9,6 +9,13 @@ class Round
     @wr_id = nil
   end
 
+  def play(user1,user2,userinput1,userinput2)
 
+    if userinput1 == "rock" && userinput == "paper"
+
+    end
+    # plays game
+    # return either user1 or user2 winner
+  end
 
 end
