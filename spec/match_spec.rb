@@ -17,5 +17,10 @@ describe Match do
 
   end
 
+  it "a match should start with nil for match winner" do
+    match1 = Match.new("firstmatch")
+    expect(match1.wm_id).to eq nil
+  end
+
 
 end

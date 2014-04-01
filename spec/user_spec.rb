@@ -13,4 +13,8 @@ describe Users do
     expect(bob.id).to eq 2
   end
 
+  it "should start user with a password" do
+    bob = Users.new("bob")
+  end
+
 end

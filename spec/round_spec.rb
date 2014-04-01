@@ -12,8 +12,14 @@ describe Round do
   end
 
   xit "should start a round with two players" do
-    round1 = Round.new("rpsgame")
+    round1 = Round.new("rpsgame",1)
 
+    round1.play()
+  end
+
+  it "should start a round with nil for round winner id" do
+    round1 = Round.new("rpsgame",1)
+    expect(round1.wr_id).to eq nil
   end
 
 end
