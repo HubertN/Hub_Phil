@@ -6,7 +6,6 @@ class Users
     @name = name
     @@id += 1
     @id = @@id
-
   end
 
 
