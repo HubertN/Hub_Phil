@@ -1,4 +1,5 @@
 class Users
+
   attr_accessor :name, :id
   @@id = 0
   def initialize(name)
