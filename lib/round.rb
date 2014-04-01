@@ -16,6 +16,28 @@ class Round
         return @wr_id = user2.id
       elsif userinput2 == "scissor"
         return @wr_id = user1.id
+      else
+        return @wr_id
+      end
+    end
+
+    if userinput1 == "paper"
+      if userinput2 == "rock"
+        return @wr_id = user1.id
+      elsif userinput2 == "scissor"
+        return @wr_id = user2.id
+      else
+        return @wr_id
+      end
+    end
+
+    if userinput1 == "scissor"
+      if userinput2 == "rock"
+        return @wr_id = user2.id
+      elsif userinput2 == "paper"
+        return @wr_id = user1.id
+      else
+        return @wr_id
       end
     end
 
