@@ -11,9 +11,10 @@ class Round
 
   def play(user1,user2,userinput1,userinput2)
 
-    if userinput1 == "rock" && userinput == "paper"
-
+    if userinput1 == "rock" && userinput2 == "paper"
+      @wr_id =  user2.id
     end
+
     # plays game
     # return either user1 or user2 winner
   end
