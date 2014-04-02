@@ -20,8 +20,41 @@ module Rps
       user = Users.new(name,password)
       @users[user.id] = user
     end
-  end
+
+    def sign_up_user(name,password)
+      listusernames = @users.values.map do |users|
+        users.name
+      end
+      if listusernames.include?(name)
+        return "username already exist"
+      else
+        sign_in_user(name,password)
+      end
+    end
   # our method, which gives us the singleton, if it already exists
   # will just return the the already made instance
-
+  end
 end
+
+ # listusernames = @users.values.name
+ #      listusernames.each do |username|
+ #        if username == name
+ #          return "username already exist"
+ #        else
+ #          sign_in_user(name,password)
+ #        end
+ #      end
+ #    end
+
+
+   # listusernames = @users.values.map do |users|
+   #      users.name
+   #    end
+   #    listusernames.each do |username|
+   #      if username == name
+   #        return "username already exist"
+   #      else
+   #        sign_in_user(name,password)
+   #      end
+   #    end
+   #  end
