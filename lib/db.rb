@@ -33,6 +33,11 @@ module Rps
     end
   # our method, which gives us the singleton, if it already exists
   # will just return the the already made instance
+
+    def create_match(userid,user2id)
+      match = Match.new(userid,user2id)
+      @matches[match.m_id] = match
+    end
   end
 end
 

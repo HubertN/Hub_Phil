@@ -30,4 +30,13 @@ describe "database" do
     expect(@db.sign_up_user("sarah","abc")).to eq "username already exist"
     expect(@db.users.length).to eq 2
   end
+
+  it "should create a match with two users to play" do
+    user1 = @db.sign_in_user("bob","123")
+    user2 = @db.sign_up_user("sarah","234")
+
+    expect(@db.matches.length).to eq 0
+    match1 = @db.create_match(user1.id,user2.id)
+    expect(@db.matches.length).to eq 1
+  end
 end
