@@ -39,17 +39,33 @@ module Rps
       @matches[match.m_id] = match
     end
 
-    def create_round(roundname,mid)
-      round = Round.new(roundname,mid)
+    def create_round(mid)
+      round = Round.new(mid)
       @rounds[round.r_id] = round
     end
 
-    def round_play(userid,user2id,rid,mid)
+    def round_play(userid,user2id,user1input,user2input,mid)
+      # round
+        # this will return a winner, & the mid
 
+        # i need to give back the round id also
+        # but this in the database class
+      # return an instance of Round.new(roundname,mid).wr_i
+      round = Round.new("name", mid)
+      round.play(userid,user2id,user1input,user2input)
     end
+
+    def match_win(rid)
+      # check if a round has user has won 3 rounds or more
+      # and remmber that a round belongs! to a match
+      #
+    end
+
   end
 
 end
+
+
 
  # listusernames = @users.values.name
  #      listusernames.each do |username|
