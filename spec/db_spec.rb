@@ -14,4 +14,11 @@ describe "database" do
     expect(@db.rounds.length).to eq 0
   end
 
+  it "should create a user, with a password " do
+    user = @db.create_user("bob")
+    expect(user.id).to eq 1
+    expect(@db.users.length).to eq 1
+
+  end
+
 end

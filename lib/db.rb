@@ -15,6 +15,11 @@ module Rps
       @matches = {}
       @winners = {}
     end
+
+    def create_user(name)
+      user = Users.new(name)
+      @users[user.id] = user
+    end
   end
   # our method, which gives us the singleton, if it already exists
   # will just return the the already made instance
