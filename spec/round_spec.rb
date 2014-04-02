@@ -8,7 +8,7 @@ describe Round do
 
   it "round should initialize with a unique round id" do
     round1 = Round.new("rpsgame",1)
-    expect(round1.r_id).to eq 2
+    expect(round1.r_id).to eq 3
   end
 
   it "starts a round with two players, and return id of user who won, rock paper" do

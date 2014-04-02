@@ -38,7 +38,14 @@ module Rps
       match = Match.new(userid,user2id)
       @matches[match.m_id] = match
     end
+
+    def create_round(roundname,mid)
+      round = Round.new(roundname,mid)
+      @rounds[round.r_id] = round
+    end
+
   end
+
 end
 
  # listusernames = @users.values.name

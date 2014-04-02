@@ -14,7 +14,7 @@ describe Match do
 
   it "should make a match with a unique id" do
     match1 = Match.new(@user1.id,@user2.id)
-    expect(match1.m_id).to eq 3
+    expect(match1.m_id).to eq 4
   end
 
 

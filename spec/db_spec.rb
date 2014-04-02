@@ -39,4 +39,18 @@ describe "database" do
     match1 = @db.create_match(user1.id,user2.id)
     expect(@db.matches.length).to eq 1
   end
+
+  it "should create a round that belongs to a match" do
+    user1 = @db.sign_in_user("bob","123")
+    user2 = @db.sign_up_user("sarah","234")
+
+    expect(@db.rounds.length).to eq 0
+    match1 = Match.new(user1.id, user2.id)
+    expect(match1.m_id).to eq 2
+
+    round1 = @db.create_round("roundone",match1.m_id)
+    expect(round1.r_id).to eq 1
+
+    expect(@db.rounds.length).to eq 1
+  end
 end
