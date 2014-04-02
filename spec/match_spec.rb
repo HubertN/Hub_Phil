@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe Match do
   before do
-    @user1 = Users.new("bob")
-    @user2 = Users.new("john")
+    @user1 = Users.new("bob","123")
+    @user2 = Users.new("john","abc")
   end
 
   it "should initialize with two user ids" do

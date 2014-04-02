@@ -16,8 +16,8 @@ module Rps
       @winners = {}
     end
 
-    def create_user(name)
-      user = Users.new(name)
+    def sign_in_user(name,password)
+      user = Users.new(name,password)
       @users[user.id] = user
     end
   end

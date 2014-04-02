@@ -13,8 +13,8 @@ describe Round do
 
   it "starts a round with two players, and return id of user who won, rock paper" do
     round1 = Round.new("rpsgame",1)
-    user1 = Users.new("bob")
-    user2 = Users.new("john")
+    user1 = Users.new("bob","123")
+    user2 = Users.new("john","abc")
 
     userinput1 = "rock"
     userinput2 = "paper"
@@ -25,8 +25,8 @@ describe Round do
 
   it "starts a round with two players, and return id of user who won, rock scissor" do
     round1 = Round.new("rpsgame",1)
-    user1 = Users.new("bob")
-    user2 = Users.new("john")
+    user1 = Users.new("bob","123")
+    user2 = Users.new("john","abc")
 
     userinput1 = "rock"
     userinput2 = "scissor"
@@ -37,8 +37,8 @@ describe Round do
 
   it "starts a round with two players, and return id of user who won, rock rock" do
     round1 = Round.new("rpsgame",1)
-    user1 = Users.new("bob")
-    user2 = Users.new("john")
+    user1 = Users.new("bob","123")
+    user2 = Users.new("john","abc")
 
     userinput1 = "rock"
     userinput2 = "rock"
@@ -50,8 +50,8 @@ describe Round do
 
   it "starts a round with two players, and return id of user who won, paper rock" do
     round1 = Round.new("rpsgame",1)
-    user1 = Users.new("bob")
-    user2 = Users.new("john")
+    user1 = Users.new("bob","123")
+    user2 = Users.new("john","abc")
 
     userinput1 = "paper"
     userinput2 = "rock"
@@ -62,8 +62,8 @@ describe Round do
 
   it "starts a round with two players, and return id of user who won, paper scissor" do
     round1 = Round.new("rpsgame",1)
-    user1 = Users.new("bob")
-    user2 = Users.new("john")
+    user1 = Users.new("bob","123")
+    user2 = Users.new("john","abc")
 
     userinput1 = "paper"
     userinput2 = "scissor"
