@@ -1,7 +1,6 @@
-require_relative "../lib/users.rb"
-require_relative "../lib/round.rb"
-require_relative "../lib/match.rb"
-require_relative "../lib/db.rb"
+require_relative "../lib/rps.rb"
+
+
 
 RSpec.configure do |config|
   # Configure each test to always use a new singleton instance

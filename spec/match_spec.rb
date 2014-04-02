@@ -9,12 +9,12 @@ describe Match do
   it "should initialize with two user ids" do
 
     match1 = Match.new(@user1.id, @user2.id)
-    expect(match1.user1).to eq (@user1.id)
+    expect(match1.player1).to eq (@user1.id)
   end
 
   it "should make a match with a unique id" do
     match1 = Match.new(@user1.id,@user2.id)
-    expect(match1.m_id).to eq 4
+    expect(match1.m_id).to eq 2
   end
 
 
