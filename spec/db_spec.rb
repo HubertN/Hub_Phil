@@ -53,4 +53,16 @@ describe "database" do
 
     expect(@db.rounds.length).to eq 1
   end
+
+  it "should play a round and return the userid who won, and matchid, rock paper" do
+
+    user1 = Users.new("bob","123")
+    user2 = Users.new("john","abc")
+
+    userinput1 = "rock"
+    userinput2 = "paper"
+    round1play = round1.play(user1,user2,userinput1,userinput2)
+
+    expect(round1play).to eq (user2.id)
+  end
 end

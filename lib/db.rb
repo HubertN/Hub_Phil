@@ -44,6 +44,9 @@ module Rps
       @rounds[round.r_id] = round
     end
 
+    def round_play(userid,user2id,rid,mid)
+
+    end
   end
 
 end
