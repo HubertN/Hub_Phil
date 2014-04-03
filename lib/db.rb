@@ -75,6 +75,10 @@ module Rps
       @rounds[round.id] = round
     end
 
+    def get_round(rid)
+      @rounds[rid]
+    end
+
     #SESSION CRUD
 
 
