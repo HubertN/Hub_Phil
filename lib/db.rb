@@ -99,6 +99,11 @@ module Rps
       @invites[invite_id]
     end
 
+    def update_invite(invite_id)
+      invite = get_invite(invite_id)
+      invite.pending = false
+    end
+
   end
 
 end

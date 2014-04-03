@@ -120,4 +120,20 @@ describe "database" do
     expect(theinvite.id).to eq invite.id
   end
 
+  it "should update an invite, to no longer be pending" do
+    user1 =  @db.sign_up_user("bob","123")
+    user2 = @db.sign_up_user("sarah","abc")
+
+    invite = @db.create_invite(user1.id,user2.id)
+
+    expect(invite.pending).to eq true
+
+    @db.update_invite(invite.id)
+    expect(invite.pending).to eq false
+  end
+
+  it "should make an invite be accepted, thereby creating a round and match" do
+
+  end
+
 end
