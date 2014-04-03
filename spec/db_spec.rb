@@ -6,16 +6,7 @@ describe "database" do
     @db = Rps.db
   end
 
-  it "should sign in a user, give the user object" do
-    expect(@db.users.length).to eq 0
-    user1 = @db.sign_up_user("bob","123")
-    expect(@db.users.length).to eq 1
 
-    user2 = @db.sign_up_user("bob","124")
-    expect(@db.sign_in_user("bob","123")).to eq (user1)
-    # expect(@db.sign_in_user("sarah","abc")).to eq nil
-
-  end
 
   it "should sign up a user, only if that username is not taken" do
     user1 = @db.sign_up_user("bob","123")
@@ -27,7 +18,7 @@ describe "database" do
   it "should get a user, baseed on their user id" do
     user1 =  @db.sign_up_user("bob","123")
     theuser = @db.get_user(user1.id)
-    expect(theuser.name).to eq "bob"
+    expect(theuser.accname).to eq "bob"
   end
 
   it "should get create a match" do
@@ -38,6 +29,12 @@ describe "database" do
     @db.create_match(user1.id,user2.id)
     expect(@db.matches.length).to eq 1
 
+  end
+
+  it "should list all the users" do
+    user1 =  @db.sign_up_user("bob","123")
+    user2 = @db.sign_up_user("sarah","abc")
+    expect(@db.get_all_users).to eq ([user1,user2])
   end
 
   it "should get a match, based on mid" do
@@ -132,19 +129,9 @@ describe "database" do
     expect(invite.pending).to eq false
   end
 
-  it "should make an invite be accepted, thereby creating a round and match" do
-    user1 =  @db.sign_up_user("bob","123")
-    user2 = @db.sign_up_user("sarah","abc")
-
-    invite = @db.create_invite(user1.id,user2.id)
-
-    @db.accept_invite(invite.id)
-
-    expect(invite.pending).to eq false
-    expect(@db.matches.length).to eq 1
-    expect(@db.rounds.length).to eq 1
 
 
-  end
+
+
 
 end

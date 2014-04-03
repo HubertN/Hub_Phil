@@ -1,9 +1,9 @@
 class Users
 
-  attr_accessor :name, :id, :password
+  attr_accessor :accname, :id, :password
   @@id = 0
-  def initialize(name,password)
-    @name = name
+  def initialize(accname,password)
+    @accname = accname
     @@id += 1
     @id = @@id
     @password = password

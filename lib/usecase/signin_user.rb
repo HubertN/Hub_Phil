@@ -2,14 +2,23 @@
 
 class SigninUser < UseCase
   def run(inputs)
-    user = Rps.db.sign_in_user(inputs[:accname],inputs[:password])
+    # user = Rps.db.sign_in_user(inputs[:accname],inputs[:password])
+    user = Rps.db.get_user_by_name(inputs[:accname])
 
     return failure(:user_does_not_exist) if user == nil
-
-    success(:accname => user.name)
+    return failure(:password_invalid) if user.password != inputs[:password]
+    session = Rps.db.create_sessions(user.id)
+    success(:session => session, :session_key => session.id, :user => user)
   end
+
+
 end
 
+# result = SigninUser.run({ some stuff })
+
+# @session_key = result.session_key
+
+# send_invite(@session_key, other_player_id)
 
 
 

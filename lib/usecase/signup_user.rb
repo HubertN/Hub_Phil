@@ -2,15 +2,15 @@
 
 class SignupUser < UseCase
   def run(inputs)
-    name = inputs[:accname]
+    accname = inputs[:accname]
     password = inputs[:password]
 
 
 
-    return failure(:name_taken) if Rps.db.get_user_by_name(name) !=nil
+    return failure(:name_taken) if Rps.db.get_user_by_name(accname) !=nil
 
     user = Rps.db.sign_up_user(inputs[:accname],inputs[:password])
-    success(:accname => user.name)
+    success(:user=> user)
   end
 end
 

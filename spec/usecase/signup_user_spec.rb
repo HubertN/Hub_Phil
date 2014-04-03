@@ -12,7 +12,7 @@ describe SigninUser do
 
     result = subject.run({:accname => "bob", :password =>"123"})
     expect(result.success?).to eq true
-    expect(result.accname).to eq "bob"
+    expect(result.user.accname).to eq "bob"
 
 
   end

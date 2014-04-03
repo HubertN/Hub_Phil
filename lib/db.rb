@@ -19,41 +19,36 @@ module Rps
     end
 
 
-
-    #USER CRUD
-    def sign_in_user(name,password)
-      @users.each do |userid, user|
-        if user.name == name && user.password == password
-          return user
-        end
-      end
-      return nil
-    end
-
     def get_user(uid)
       @users[uid]
     end
 
-    def get_user_by_name(name)
-      @users.values.find { |user| user.name == name }
+    def get_user_by_name(accname)
+      @users.values.find { |user| user.accname == accname }
     end
 
-    def sign_up_user(name,password)
-      # @users.values.find
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    #         USER CRUD
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    def sign_up_user(accname,password)
 
-      # listusernames = @users.values.map do |users|
-      #   users.name
-      # end
-      # if listusernames.include?(name)
-      #   return nil
-      # else
-      user = Users.new(name,password)
+      user = Users.new(accname,password)
       @users[user.id] = user
       # end
     end
 
+    def sign_in_user(accname, password)
 
+    end
+
+    def get_all_users
+      @users.values
+    end
+
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     #MATCH CRUD
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     def create_match(userid,user2id)
       match = Match.new(userid,user2id)
       @matches[match.m_id] = match
@@ -70,7 +65,10 @@ module Rps
       thematch.wm_id = winner
     end
 
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     #ROUND CRUD
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     def create_round(data)
       round = Round.new(data)
       @rounds[round.id] = round
@@ -80,15 +78,23 @@ module Rps
       @rounds[rid]
     end
 
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     #SESSION CRUD
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     def create_sessions(uid)
       session = Session.new(uid)
       @sessions[session.id] = session
+      session
     end
 
     def get_session(sid)
       @sessions[sid]
     end
+
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    #INVITE CRUD
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     def create_invite(user1id,user2id)
       invite = Invite.new(user1id,user2id)
@@ -110,6 +116,20 @@ module Rps
       match = create_match(invite.inviter,invite.target)
       create_round({:match_id=>match.m_id})
     end
+
+    def start_round(mid, session_key, current_user1_choice)
+      match = get_match(mid)
+
+      user = @users[sessions[session_key].userid]
+
+      create_round({:match_id => mid, :u1_choice=>current_user1_choice})
+    end
+
+    def end_round(mid,rid,session_key, current_user2_choice )
+      match = get_match(mid)
+
+    end
+
   end
 
 end

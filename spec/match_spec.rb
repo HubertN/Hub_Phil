@@ -13,8 +13,9 @@ describe Match do
   end
 
   it "should make a match with a unique id" do
+    Match.class_variable_set :@@id, 0
     match1 = Match.new(@user1.id,@user2.id)
-    expect(match1.m_id).to eq 8
+    expect(match1.m_id).to eq 1
   end
 
 

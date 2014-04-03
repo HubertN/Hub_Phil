@@ -5,7 +5,7 @@ describe Users do
 
   it "should initialize with a name "do
     bob = Users.new("bob","123")
-    bob.name = "bob"
+    bob.accname = "bob"
   end
 
   it "should start user with an unique id" do

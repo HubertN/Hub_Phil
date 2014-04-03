@@ -7,6 +7,7 @@ require_relative "invite.rb"
 require_relative "usecase.rb"
 require_relative "usecase/signin_user.rb"
 require_relative "usecase/signup_user.rb"
+require_relative "usecase/send_invite.rb"
 
 # Dir["#{F"]
 

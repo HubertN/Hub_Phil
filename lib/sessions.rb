@@ -9,12 +9,3 @@ attr_reader :id, :userid
 
 end
 
-def create_session(userid)
-
-  session1 = Sesseion.new(userid)
-  @sessions[session1.id] = session1
-end
-
-def get_session(sid)
-  @sessions[sid]
-end
