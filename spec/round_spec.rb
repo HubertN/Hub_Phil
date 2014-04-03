@@ -6,7 +6,7 @@ describe Round do
 
   it "round should initialize with a unique round id" do
     round1 = Round.new({:match_id=>1})
-    expect(round1.id).to eq 3
+    expect(round1.id).to eq 4
   end
 
   xit "starts a round with two players, and return id of user who won, rock paper" do

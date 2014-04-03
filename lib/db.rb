@@ -102,8 +102,14 @@ module Rps
     def update_invite(invite_id)
       invite = get_invite(invite_id)
       invite.pending = false
+      invite
     end
 
+    def accept_invite(invite_id)
+      invite = update_invite(invite_id)
+      match = create_match(invite.inviter,invite.target)
+      create_round({:match_id=>match.m_id})
+    end
   end
 
 end

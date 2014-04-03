@@ -133,6 +133,17 @@ describe "database" do
   end
 
   it "should make an invite be accepted, thereby creating a round and match" do
+    user1 =  @db.sign_up_user("bob","123")
+    user2 = @db.sign_up_user("sarah","abc")
+
+    invite = @db.create_invite(user1.id,user2.id)
+
+    @db.accept_invite(invite.id)
+
+    expect(invite.pending).to eq false
+    expect(@db.matches.length).to eq 1
+    expect(@db.rounds.length).to eq 1
+
 
   end
 
