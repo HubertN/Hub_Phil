@@ -104,12 +104,20 @@ describe "database" do
     user2 = @db.sign_up_user("sarah","abc")
 
     expect(@db.invites.length).to eq 0
+    invite = @db.create_invite(user1.id,user2.id)
+    expect(@db.invites.length).to eq 1
+    expect(invite.pending).to eq true
+  end
+
+  it "should get an invite" do
+    user1 =  @db.sign_up_user("bob","123")
+    user2 = @db.sign_up_user("sarah","abc")
 
     invite = @db.create_invite(user1.id,user2.id)
 
-    expect(@db.invites.length).to eq 1
+    theinvite = @db.get_invite(invite.id)
 
-    expect(invite.pending).to eq true
+    expect(theinvite.id).to eq invite.id
   end
 
 end

@@ -95,6 +95,10 @@ module Rps
       @invites[invite.id] = invite
     end
 
+    def get_invite(invite_id)
+      @invites[invite_id]
+    end
+
   end
 
 end
