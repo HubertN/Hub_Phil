@@ -58,9 +58,18 @@ module Rps
       @matches[match.m_id] = match
     end
 
+    def get_match(mid)
+      @matches[mid]
+    end
+
     def create_round(mid)
       round = Round.new(mid)
       @rounds[round.r_id] = round
+    end
+
+    def update_match(mid,winner)
+      thematch = @matches[mid]
+      thematch.wm_id = winner
     end
 
     #ROUND CRUD

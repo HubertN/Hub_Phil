@@ -1,5 +1,6 @@
 class Invite
 attr_reader :id, :inviter, :target
+attr_accessor :pending
 @@id = 0
 
   def initialize(inviter,target)
@@ -7,6 +8,7 @@ attr_reader :id, :inviter, :target
     @id = @@id
     @invite = inviter
     @target = target
+    @pending = true
   end
 
 end
