@@ -8,7 +8,7 @@ module Rps
   # you, use the db method
   # users = Rps.db.(whatevermethod(parameters))
   class DB
-    attr_accessor :users, :rounds, :matches, :winners
+    attr_accessor :users, :rounds, :matches, :winners, :sessions
     def initialize
       @users = {}
       @rounds = {}
@@ -80,8 +80,10 @@ module Rps
     end
 
     #SESSION CRUD
-
-
+    def create_sessions(uid)
+      session = Session.new(uid)
+      @sessions[session.id] = session
+    end
 
   end
 

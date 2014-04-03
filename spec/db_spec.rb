@@ -83,4 +83,13 @@ describe "database" do
     expect(theround.winner_id).to eq user2.id
   end
 
+  it "should create a session" do
+    expect(@db.sessions.length).to eq 0
+    user1 = @db.sign_up_user("bob","123")
+    #session = Sessions.new(user1.id)
+    @db.create_sessions(user1.id)
+    expect(@db.sessions.length).to eq 1
+
+  end
+
 end
