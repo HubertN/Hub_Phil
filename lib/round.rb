@@ -2,19 +2,18 @@
 
  class Round
     attr_reader :id
-    attr_accessor :match_id, :winner_id, :loser_id, :p1_choice, :p2_choice, :user, :user2
+    attr_accessor :match_id, :winner_id, :loser_id, :u1_choice, :u2_choice, :user, :user2
     @@counter = 0
 
-    def initialize(attrs)
+    def initialize(data)
       @@counter += 1
       @id = @@counter
-      @match_id = attrs[:match_id]
-      @winner_id = attrs[:winner_id]
-      @loser_id = attrs[:loser_id]
-      @p1_choice = attrs[:p1_choice]
-      @p2_choice = attrs[:p2_choice]
-      @user1 = attrs[:user]
-      @user2 = attrs[:user2]
+      @match_id = data[:match_id]
+      @winner_id = data[:winner_id]
+      @loser_id = data[:loser_id]
+      @p1_choice = data[:u1_choice]
+      @p2_choice = data[:u2_choice]
+
     end
 
 

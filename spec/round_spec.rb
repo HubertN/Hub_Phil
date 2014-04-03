@@ -2,10 +2,7 @@ require "spec_helper"
 
 describe Round do
 
-  it "should initialize with a round name" do
-    round1 = Round.new({:match_id=>1})
-    expect(round1.id).to eq 1
-  end
+
 
   it "round should initialize with a unique round id" do
     round1 = Round.new({:match_id=>1})

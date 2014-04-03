@@ -62,10 +62,7 @@ module Rps
       @matches[mid]
     end
 
-    def create_round(mid)
-      round = Round.new(mid)
-      @rounds[round.r_id] = round
-    end
+
 
     def update_match(mid,winner)
       thematch = @matches[mid]
@@ -73,7 +70,10 @@ module Rps
     end
 
     #ROUND CRUD
-
+    def create_round(data)
+      round = Round.new(data)
+      @rounds[round.id] = round
+    end
 
     #SESSION CRUD
 

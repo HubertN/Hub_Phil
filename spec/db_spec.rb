@@ -62,7 +62,16 @@ describe "database" do
     expect(match.wm_id).to eq user1.id
   end
 
+  it "should create a round" do
+    user1 =  @db.sign_up_user("bob","123")
+    user2 = @db.sign_up_user("sarah","abc")
+    match = @db.create_match(user1.id,user2.id)
 
+    expect(@db.rounds.length).to eq 0
+    round = @db.create_round({:match_id => match.m_id,:winner_id => user2.id, :u1_choice=> "scissors"})
+    expect(@db.rounds.length).to eq 1
+    expect(round.id).to eq 1
+  end
 
 
 
