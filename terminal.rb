@@ -15,7 +15,7 @@ class TerminalClient
       puts "      "
       userinput = gets.chomp.downcase
       puts "Command Accepted '#{userinput}'"
-      runCommand(parseInput(userinput))
+      runMainCommand(parseInput(userinput))
     end
 
   end
@@ -32,7 +32,8 @@ class TerminalClient
 
     userinput = gets.chomp.downcase
     puts "Command Accepted '#{userinput}'"
-    runUserCommands(parseInput(userinput))
+    runUserCommand(parseInput(userinput))
+
   end
 
   def update_function(sessionkey)
@@ -44,9 +45,7 @@ class TerminalClient
   end
 
 
-
-
-  def runCommand(parsedInput)
+  def runMainCommand(parsedInput)
     if parsedInput[0] == 'help'
       return
     elsif parsedInput[0] == 'login'
@@ -83,8 +82,9 @@ class TerminalClient
     end
   end
 
-  def runUserCommands(parsedInput)
+  def runUserCommand(parsedInput)
     if parsedInput[0] == "list"
+
        userarray = Rps.db.get_all_users
        puts "ID NAME"
        userarray.each do |user|

@@ -7,34 +7,33 @@ class SigninUser < UseCase
 
     return failure(:user_does_not_exist) if user == nil
     return failure(:password_invalid) if user.password != inputs[:password]
-    session = Rps.db.create_sessions(user.id)
+    session = Rps.db.create_session(user.id)
     success(:session => session, :session_key => session.id, :user => user)
   end
 
 
 end
 
-# result = SigninUser.run({ some stuff })
+# class Client
+
+# def start
+
+# user signs in
+# result = SigninUser.run({ name: "Bob", password: "123"})
 
 # @session_key = result.session_key
 
-# send_invite(@session_key, other_player_id)
+# user sends an invite
 
+# puts "enter id of player you want to invite"
+# other_player_id = gets.chomp
+# result = SendInvite.run(session_key: @session_key, invitee: other_player_id)
 
-
-# module TM
-
-#   class ProjectShow < UseCase
-#     def run(inputs)
-#       # inputs = { :pid => "user inputted pid"}
-#       project = TM.db.get_project(inputs[:pid])
-
-#       return failure(:project_does_not_exist) if project == nil
-
-#       remaining_tasks = TM.db.remaining_task_proj(inputs[:pid])
-#       success(:project => project, :remaining_tasks => remaining_tasks)
-#     end
-
-#   end
 
 # end
+# end
+
+# x = Client.new.start
+
+
+

@@ -27,14 +27,23 @@ module Rps
       @users.values.find { |user| user.accname == accname }
     end
 
+    def get_user_by_session(sessionid)
+      session = @sessions[sessionid]
+      userobject = @users[session.userid]
+      return userobject
+    end
+
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     #         USER CRUD
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    def sign_up_user(accname,password)
 
+
+
+      # this is the create user method
+    def sign_up_user(accname,password)
       user = Users.new(accname,password)
       @users[user.id] = user
-      # end
+      user
     end
 
     def sign_in_user(accname, password)
@@ -82,7 +91,7 @@ module Rps
     #SESSION CRUD
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    def create_sessions(uid)
+    def create_session(uid)
       session = Session.new(uid)
       @sessions[session.id] = session
       session

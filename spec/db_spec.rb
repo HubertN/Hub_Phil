@@ -84,14 +84,14 @@ describe "database" do
     expect(@db.sessions.length).to eq 0
     user1 = @db.sign_up_user("bob","123")
     #session = Sessions.new(user1.id)
-    @db.create_sessions(user1.id)
+    @db.create_session(user1.id)
     expect(@db.sessions.length).to eq 1
 
   end
 
   it "should get a session, based on session id" do
     user1 = @db.sign_up_user("bob","123")
-    session = @db.create_sessions(user1.id)
+    session = @db.create_session(user1.id)
 
     expect(@db.get_session(session.id)).to eq session
   end
@@ -129,7 +129,12 @@ describe "database" do
     expect(invite.pending).to eq false
   end
 
-
+  it "should get the user object, from the session key" do
+    user1 =  @db.sign_up_user("bob","123")
+    session = @db.create_session(user1.id)
+    userobject = @db.get_user_by_session(session.id)
+    expect(userobject.accname).to eq "bob"
+  end
 
 
 

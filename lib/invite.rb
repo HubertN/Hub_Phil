@@ -6,7 +6,7 @@ attr_accessor :pending
   def initialize(inviter,target)
     @@id +=1
     @id = @@id
-    @invite = inviter
+    @inviter = inviter
     @target = target
     @pending = true
   end
