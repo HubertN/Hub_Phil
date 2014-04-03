@@ -7,7 +7,7 @@ describe Invite do
     user1 = Users.new("bob","123")
     user2 = Users.new("sarah","abc")
     invite1 = Invite.new(user1.id,user2.id)
-    expect(invite1.id).to eq 1
+    expect(invite1.id).to eq 2
   end
 
 

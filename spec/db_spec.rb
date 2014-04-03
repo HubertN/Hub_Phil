@@ -92,4 +92,24 @@ describe "database" do
 
   end
 
+  it "should get a session, based on session id" do
+    user1 = @db.sign_up_user("bob","123")
+    session = @db.create_sessions(user1.id)
+
+    expect(@db.get_session(session.id)).to eq session
+  end
+
+  it "should create an invite" do
+    user1 =  @db.sign_up_user("bob","123")
+    user2 = @db.sign_up_user("sarah","abc")
+
+    expect(@db.invites.length).to eq 0
+
+    invite = @db.create_invite(user1.id,user2.id)
+
+    expect(@db.invites.length).to eq 1
+
+    expect(invite.pending).to eq true
+  end
+
 end

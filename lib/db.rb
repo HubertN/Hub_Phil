@@ -8,13 +8,14 @@ module Rps
   # you, use the db method
   # users = Rps.db.(whatevermethod(parameters))
   class DB
-    attr_accessor :users, :rounds, :matches, :winners, :sessions
+    attr_accessor :users, :rounds, :matches, :winners, :sessions, :invites
     def initialize
       @users = {}
       @rounds = {}
       @matches = {}
       @winners = {}
       @sessions = {}
+      @invites = {}
     end
 
 
@@ -83,6 +84,15 @@ module Rps
     def create_sessions(uid)
       session = Session.new(uid)
       @sessions[session.id] = session
+    end
+
+    def get_session(sid)
+      @sessions[sid]
+    end
+
+    def create_invite(user1id,user2id)
+      invite = Invite.new(user1id,user2id)
+      @invites[invite.id] = invite
     end
 
   end
