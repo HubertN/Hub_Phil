@@ -17,6 +17,8 @@ module Rps
       @sessions = {}
     end
 
+
+
     #USER CRUD
     def sign_in_user(name,password)
       @users.each do |userid, user|

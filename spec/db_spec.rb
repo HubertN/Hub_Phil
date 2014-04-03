@@ -21,6 +21,10 @@ describe "database" do
     user1 = @db.sign_up_user("bob","123")
     expect(@db.users.length).to eq 1
 
-    expect(@db.sign_up_user("bob","1234")).to eq nil
+    #expect(@db.sign_up_user("bob","1234")).to eq nil
+  end
+
+  it "should get a user, baseed on their user id" do
+    user1 =  @db.sign_up_user("bob","123")
   end
 end
