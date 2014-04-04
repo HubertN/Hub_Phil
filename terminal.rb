@@ -23,7 +23,8 @@ class TerminalClient
   def user_menu(sessionkey,user)
     puts "Welcome, #{user.accname}"
     puts "Available Commands:"
-    puts "  List : Lists all users"
+    puts "  List users : Lists all users"
+    puts "  List invites : List all available invites"
     puts "  Invite : Invite someone to play a match."
     puts "  Pending : Show all pending invites, and match moves"
     puts "  Accept : Accept a pending invite"
@@ -60,6 +61,7 @@ class TerminalClient
 
         puts "User successfully signed in with accname: #{result.user.accname}"
         puts "Users session_id is #{result.session_key}"
+        @skey = result.session_key
         user_menu(result.session_key,result.user)
       else
         puts "User couldn't sign in, error: #{result.error}"
@@ -84,7 +86,7 @@ class TerminalClient
   end
 
   def runUserCommand(parsedInput, sessionkey)
-    if parsedInput[0] == "list"
+    if parsedInput[0] == "list" && parsedInput[1] == "users"
       userarray = Rps.db.get_all_users
       puts "ID NAME"
       userarray.each do |user|
@@ -99,7 +101,12 @@ class TerminalClient
       else
         puts "You didn't send an invite, error: #{result.error}"
       end
-
+    elsif parsedInput[0] == "list" && parsedInput[1] == "invite"
+      puts "ID Inviter Target Pending"
+      invitearray = Rps.db.get_all_invites
+      invitearray.each do |invite|
+        puts "#{invite.id}     #{invite.inviter}     #{invite.target}      #{invite.pending}"
+      end
     end
     user_menu(sessionkey, Rps.db.get_user_by_session(sessionkey))
   end

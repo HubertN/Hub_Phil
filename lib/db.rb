@@ -91,6 +91,16 @@ module Rps
       @rounds.values
     end
 
+    def update_round(rid, data)
+      round = @rounds[rid]
+      round.winner_id = data[:winner_id]
+      round.loser_id = data[:loser_id]
+      round.winning_player = data[:winning_player]
+      round.p1_choice = data[:p1_choice]
+      round.p2_choice = data[:p2_choice]
+
+    end
+
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     #         SESSION CRUD      ##
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -138,18 +148,9 @@ module Rps
       create_round({:match_id=>match.m_id})
     end
 
-    def start_round(mid, session_key, current_user1_choice)
-      match = get_match(mid)
+    ##Client Queries##
 
-      user = @users[sessions[session_key].userid]
 
-      create_round({:match_id => mid, :u1_choice=>current_user1_choice})
-    end
-
-    def end_round(mid,rid,session_key, current_user2_choice )
-      match = get_match(mid)
-
-    end
 
   end
 
