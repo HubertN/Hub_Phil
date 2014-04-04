@@ -6,6 +6,7 @@ describe SendInvite do
     user1 = Rps.db.sign_up_user("bob","123")
     user2 = Rps.db.sign_up_user("sarah","abc")
 
+
     session = Rps.db.create_session(user1.id)
 
 
@@ -16,7 +17,7 @@ describe SendInvite do
     expect(result.target).to eq user2.id
   end
 
-  xit "should give an error message and an invite is sent to a player that does not exist" do
+  it "should give an error message and an invite is sent to a player that does not exist" do
     user1 = Rps.db.sign_up_user("bob","123")
 
     session = Rps.db.create_session(user1.id)

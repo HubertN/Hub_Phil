@@ -8,7 +8,7 @@ class SendInvite < UseCase
     return failure(:user_does_not_exist) if target == nil
 
     invite = Rps.db.create_invite(user.id,inputs[:target])
-    success(:invitepending => invite.pending, :inviter=>user.id, :target => target)
+    success(:invitepending => invite.pending, :inviter=>user.id, :target => target.id)
   end
 end
 

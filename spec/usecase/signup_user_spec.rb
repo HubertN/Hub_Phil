@@ -8,7 +8,7 @@ describe SigninUser do
   it "signs up a user, with a name and password" do
     user1 = @db.sign_up_user("bob","123")
 
-    @db.sign_in_user("bob","123")
+    #@db.sign_in_user("bob","123")
 
     result = subject.run({:accname => "bob", :password =>"123"})
     expect(result.success?).to eq true

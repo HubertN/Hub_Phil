@@ -23,21 +23,21 @@ class TerminalClient
   def user_menu(sessionkey,user)
     puts "Welcome, #{user.accname}"
     puts "Available Commands:"
-    puts "  User List"
-    puts "  Invite Accept"
-    puts "  Invite Decline"
-    puts "  Invite Request"
+    puts "  List : Lists all users"
+    puts "  Invite : Invite someone to play a match."
+    puts "  Pending : Show all pending invites, and match moves"
+    puts "  Accept : Accept a pending invite"
     puts "Also, You have #{update_function(sessionkey)}"
 
 
     userinput = gets.chomp.downcase
     puts "Command Accepted '#{userinput}'"
-    runUserCommand(parseInput(userinput))
+    runUserCommand(parseInput(userinput), sessionkey)
 
   end
 
   def update_function(sessionkey)
-    "nothing to see here, just a placeholder"
+    " --------- '0' pending moves and '0' match invites."
   end
 
   def parseInput(userInput)
@@ -80,17 +80,28 @@ class TerminalClient
       end
 
     end
+    main_menu
   end
 
-  def runUserCommand(parsedInput)
+  def runUserCommand(parsedInput, sessionkey)
     if parsedInput[0] == "list"
+      userarray = Rps.db.get_all_users
+      puts "ID NAME"
+      userarray.each do |user|
+      puts "#{user.id}   #{user.accname}"
+      end
+    elsif parsedInput[0] == "invite"
+      puts "Who would you like to invite?"
+      target = gets.chomp.downcase.to_i
+      result =SendInvite.run({:target => target, :session_key => sessionkey})
+      if result.success?
+        puts "You sent an invite to #{result.target}"
+      else
+        puts "You didn't send an invite, error: #{result.error}"
+      end
 
-       userarray = Rps.db.get_all_users
-       puts "ID NAME"
-       userarray.each do |user|
-        puts "#{user.id}   #{user.accname}"
-       end
     end
+    user_menu(sessionkey, Rps.db.get_user_by_session(sessionkey))
   end
 end
 

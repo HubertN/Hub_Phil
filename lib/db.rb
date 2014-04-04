@@ -46,9 +46,7 @@ module Rps
       user
     end
 
-    def sign_in_user(accname, password)
 
-    end
 
     def get_all_users
       @users.values
@@ -67,7 +65,9 @@ module Rps
       @matches[mid]
     end
 
-
+    def get_all_matches
+      @matches.values
+    end
 
     def update_match(mid,winner)
       thematch = @matches[mid]
@@ -87,6 +87,10 @@ module Rps
       @rounds[rid]
     end
 
+    def get_all_rounds
+      @rounds.values
+    end
+
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     #SESSION CRUD
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -99,6 +103,10 @@ module Rps
 
     def get_session(sid)
       @sessions[sid]
+    end
+
+    def get_all_sessions
+      @sessions.values
     end
 
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
