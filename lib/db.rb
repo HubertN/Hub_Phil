@@ -30,11 +30,11 @@ module Rps
     def get_user_by_session(sessionid)
       session = @sessions[sessionid]
       userobject = @users[session.userid]
-      return userobject
+      userobject
     end
 
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    #         USER CRUD
+    #         USER CRUD         ##
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
@@ -53,7 +53,7 @@ module Rps
     end
 
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    #MATCH CRUD
+    #       MATCH               ##
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     def create_match(userid,user2id)
@@ -75,7 +75,7 @@ module Rps
     end
 
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    #ROUND CRUD
+    #          ROUND CRUD       ##
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     def create_round(data)
@@ -92,7 +92,7 @@ module Rps
     end
 
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    #SESSION CRUD
+    #         SESSION CRUD      ##
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     def create_session(uid)
@@ -110,7 +110,7 @@ module Rps
     end
 
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    #INVITE CRUD
+    #         INVITE CRUD       ##
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     def create_invite(user1id,user2id)
@@ -120,6 +120,10 @@ module Rps
 
     def get_invite(invite_id)
       @invites[invite_id]
+    end
+
+    def get_all_invites
+      @invites.values
     end
 
     def update_invite(invite_id)

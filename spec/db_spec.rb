@@ -149,6 +149,9 @@ describe "database" do
     invite = @db.create_invite(user1.id,user2.id)
     expect(@db.invites.length).to eq 1
     expect(invite.pending).to eq true
+    expect(invite.inviter).to eq user1.id
+
+    expect(invite.target).to eq user2.id
   end
 
   it "should get an invite" do
@@ -157,9 +160,11 @@ describe "database" do
 
     invite = @db.create_invite(user1.id,user2.id)
 
-    theinvite = @db.get_invite(invite.id)
+    retrieved_invite = @db.get_invite(invite.id)
 
-    expect(theinvite.id).to eq invite.id
+    expect(retrieved_invite.id).to eq invite.id
+    expect(retrieved_invite.inviter).to eq user1.id
+    expect(retrieved_invite.target).to eq user2.id
   end
 
   it "should update an invite, to no longer be pending" do
@@ -172,6 +177,22 @@ describe "database" do
 
     @db.update_invite(invite.id)
     expect(invite.pending).to eq false
+  end
+
+  it "should get all invites" do
+    user1 =  @db.sign_up_user("bob","123")
+    user2 = @db.sign_up_user("sarah","abc")
+
+    user3 = @db.sign_up_user("ginger","456")
+    user4 = @db.sign_up_user("kelly","qwe")
+
+    invite = @db.create_invite(user1.id,user2.id)
+    invite = @db.create_invite(user3.id,user4.id)
+
+    allinvites = @db.get_all_invites
+    expect(allinvites.first.inviter).to eq user1.id
+
+    expect(allinvites[1].target).to eq user4.id
   end
 
   it "should get the user object, from the session key" do
